@@ -1,0 +1,23 @@
+# Defaults for kafka
+
+# Set to 0 to start kafka & zookeeper
+NO_START=1
+
+# properties files (mandatory)
+KAFKA_SERVER_PROPERTIES="/opt/kafka/config/server.properties"
+ZOOKEEPER_SERVER_PROPERTIES="/opt/kafka/config/zookeeper.properties"
+
+# Other options
+# KAFKA_HEAP_OPTS="-Xmx1G -Xms1G"
+
+# Use a different java ex. Oracle Java8.
+#
+# To use Oracle Java8, first install it as below:
+# $ apt-get -y --force-yes install software-properties-common
+# $ add-apt-repository --yes ppa:webupd8team/java
+# $ apt-get update
+# $ echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections
+# $ apt-get -y --force-yes install oracle-java8-installer
+#
+# and then uncomment the below line:
+# JAVA_HOME=/usr/lib/jvm/java-8-oracle

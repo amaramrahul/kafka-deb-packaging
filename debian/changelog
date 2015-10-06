@@ -1,0 +1,6 @@
+kafka (0.8.2.2-1) trusty; urgency=low
+
+  * Initial release
+  * Gradle wrapper generated and added to repo (see README.Debian)
+
+ -- Rahul Amaram <rahul.amaram@vizury.com>  Mon, 21 Sep 2015 19:46:04 +0530

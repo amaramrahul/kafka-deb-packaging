@@ -1,0 +1,31 @@
+# kafka - kafka job file
+
+description "Kafka Distributed Message Broker Service"
+author "Rahul Amaram <rahul.amaram@vizury.com>"
+
+# Stanzas
+#
+# Stanzas control when and how a process is started and stopped
+# See a list of stanzas here: http://upstart.ubuntu.com/wiki/Stanzas#respawn
+
+# When to start the service
+start on (started zookeeper)
+
+# When to stop the service
+stop on (stopping zookeeper)
+
+# Automatically restart process if crashed
+respawn
+
+# Run before process
+pre-start script
+  [ -f /etc/default/kafka ] || { stop; exit 0; }
+  . /etc/default/kafka
+  [ "$NO_START" = "0" ] || { stop; exit 0; }
+end script
+
+script
+  . /etc/default/kafka
+  export KAFKA_HEAP_OPTS JAVA_HOME
+  exec /opt/kafka/bin/kafka-server-start.sh $KAFKA_SERVER_PROPERTIES
+end script
